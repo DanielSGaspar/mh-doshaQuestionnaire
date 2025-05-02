@@ -12,7 +12,7 @@ const calculateDoshaScores = (
 
   // Iterate through all sections and questions
   Object.values(allAnswers).forEach((section) => {
-    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     Object.entries(section).forEach(([_, answer]) => {
       if (answer === "Vata") vata++;
       if (answer === "Pitta") pitta++;
