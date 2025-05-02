@@ -5,7 +5,7 @@ export default function QuestionnaireLayout({
 }) {
   return (
     <div className="container mx-auto py-8 px-4">
-      <div className="max-w-3xl mx-auto">{children}</div>
+      <div className="max-w-3xl mx-auto mb-8">{children}</div>
     </div>
   );
 }

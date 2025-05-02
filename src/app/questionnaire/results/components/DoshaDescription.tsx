@@ -91,7 +91,7 @@ export const DoshaDescription = ({ dosha }: DoshaDescriptionProps) => {
           <h1 className="text-xl font-bold">Soap Recommendations</h1>
           <p>{currentDosha.soapRecommendations.soaps}</p>
           <p className="pt-4">
-            <b>Desired effects:</b> {currentDosha.soapRecommendations.effects}
+            <b>Benefits:</b> {currentDosha.soapRecommendations.effects}
           </p>
         </div>
       </CardContent>

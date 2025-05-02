@@ -20,10 +20,11 @@ export default function Home() {
           Take our comprehensive questionnaire to understand your unique
           constitution and receive soap recommendations.
         </p>
-
-        <Button asChild size="lg">
-          <Link href="/questionnaire">Start Questionnaire</Link>
-        </Button>
+        <div className="mb-8">
+          <Button asChild size="lg">
+            <Link href="/questionnaire">Start Questionnaire</Link>
+          </Button>
+        </div>
       </div>
     </div>
   );
