@@ -3,11 +3,9 @@
 import { mentalAndEmotionalTraitsSchema } from "@/app/schemas/mentalAndEmotionalTraitsSection";
 import { BottomNavigationButtons } from "@/components/questionnaire/BottomNavigationButtons";
 import { QuestionField } from "@/components/questionnaire/QuestionField";
-import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form } from "@/components/ui/form";
 import { Progress } from "@/components/ui/progress";
-import { doshaQuestions } from "@/data/doshaQuestions";
 import { useTranslatedDoshaQuestions } from "@/hooks/useTranslatedDoshaQuestions";
 import { useQuestionnaireStore } from "@/store/questionnaire-store";
 import { useLanguage } from "@/translations/translations";

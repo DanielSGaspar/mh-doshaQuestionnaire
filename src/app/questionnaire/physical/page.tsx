@@ -3,7 +3,6 @@
 import { physicalSchema } from "@/app/schemas/physicalSchema";
 import { BottomNavigationButtons } from "@/components/questionnaire/BottomNavigationButtons";
 import { QuestionField } from "@/components/questionnaire/QuestionField";
-import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form } from "@/components/ui/form";
 import { Progress } from "@/components/ui/progress";
