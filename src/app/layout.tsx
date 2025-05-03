@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { LanguageProvider } from "@/translations/translations";
 
 export const metadata: Metadata = {
   title: "Monte Holistico - Dosha Questionnaire",
@@ -26,7 +27,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="bg-[#8f4c372b]">{children}</body>
+      <body className="bg-[#8f4c372b]">
+        <LanguageProvider>{children}</LanguageProvider>
+      </body>
     </html>
   );
 }

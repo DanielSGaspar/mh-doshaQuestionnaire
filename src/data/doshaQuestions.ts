@@ -20,6 +20,16 @@ interface DoshaQuestions {
   healthTendenciesSection: Question[];
 }
 
+export const sectionMapping = {
+  physicalCharacteristics: [1, 2, 3, 4, 5],
+  digestionAndAppetite: [6, 7, 8, 9],
+  sleepPatterns: [10, 11],
+  mentalAndEmotionalTraits: [12, 13, 14, 15],
+  activityAndBehavior: [16, 17, 18, 19],
+  environmentalResponses: [20, 21],
+  healthTendencies: [22, 23, 24],
+};
+
 export const doshaQuestions: DoshaQuestions = {
   physicalCharacteristicsSection: [
     {

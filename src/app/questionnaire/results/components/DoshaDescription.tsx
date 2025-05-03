@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { useLanguage } from "@/translations/translations";
 import { DoshaResultType } from "@/types/questionnaire.types";
 import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter";
 import { DOSHA_IMAGES } from "@/utils/doshaIcons";
@@ -6,40 +7,6 @@ import Image from "next/image";
 
 type DoshaDescriptionProps = {
   dosha: DoshaResultType;
-};
-
-const doshaDescriptions = {
-  vata: {
-    characteristics:
-      "Creativity, quick thinking, enthusiasm. Light, expressive and active personalities, but prone to exhaustion, anxiety and dryness.",
-    needs: "Warmth, rest, grounding and stability.",
-    soapRecommendations: {
-      soaps: "Jasmine, calendula & patchouli, lavender, ylang ylang, coconut",
-      effects:
-        "Nourishing and grounding scents that calm the nervous system and hydrate dry skin.",
-    },
-  },
-  pitta: {
-    characteristics:
-      "Clarity, leadership, passion. Organised, intense and action-driven, but can lean towards anger, criticism and burnout.",
-    needs: "Coolness, gentleness, and time to enjoy without pressure.",
-    soapRecommendations: {
-      soaps:
-        "Peppermint, rosemary, lavender, lemongrass, ylang ylang, charcoal & eucalyptus, coconut",
-      effects:
-        "Cooling and soothing aromas to balance heat and calm intensity.",
-    },
-  },
-  kapha: {
-    characteristics:
-      "Stability, tenderness, calm. Patient, loving and dependable, but may tend towards sluggishness, attachment and heaviness.",
-    needs: "Movement, lightness, motivation and change.",
-    soapRecommendations: {
-      soaps:
-        "Coffee & cinnamon, rose geranium, rosemary, charcoal & eucalyptus, lemongrass",
-      effects: "Stimulating and invigorating blends that awaken and energise.",
-    },
-  },
 };
 
 const colorConfig = {
@@ -58,6 +25,11 @@ const colorConfig = {
 };
 
 export const DoshaDescription = ({ dosha }: DoshaDescriptionProps) => {
+  const { t } = useLanguage();
+
+  const resultsTranslations = t.questionnaire.results;
+
+  const doshaDescriptions = t.questionnaire.results.doshasDescriptions;
   const currentDosha = doshaDescriptions[dosha];
   const currentColorConfig = colorConfig[dosha];
 
@@ -76,7 +48,10 @@ export const DoshaDescription = ({ dosha }: DoshaDescriptionProps) => {
               {capitalizeFirstLetter(dosha)}
             </h1>
             <p>{currentDosha.characteristics}</p>
-            <p>They need: {currentDosha.needs}</p>
+            <p>
+              {resultsTranslations.additionalCopy.theyNeed}
+              {currentDosha.needs}
+            </p>
           </div>
           <div className="w-100">
             <Image
@@ -88,10 +63,13 @@ export const DoshaDescription = ({ dosha }: DoshaDescriptionProps) => {
           </div>
         </div>
         <div className="py-4 pr-2">
-          <h1 className="text-xl font-bold">Soap Recommendations</h1>
+          <h1 className="text-xl font-bold">
+            {resultsTranslations.additionalCopy.soapRecommendations}
+          </h1>
           <p>{currentDosha.soapRecommendations.soaps}</p>
           <p className="pt-4">
-            <b>Benefits:</b> {currentDosha.soapRecommendations.effects}
+            <b>{resultsTranslations.additionalCopy.benefits}</b>{" "}
+            {currentDosha.soapRecommendations.effects}
           </p>
         </div>
       </CardContent>

@@ -1,13 +1,16 @@
 "use client";
 
 import { digestionAndAppetiteSchema } from "@/app/schemas/digestionAndAppetiteSchema";
+import { BottomNavigationButtons } from "@/components/questionnaire/BottomNavigationButtons";
 import { QuestionField } from "@/components/questionnaire/QuestionField";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form } from "@/components/ui/form";
 import { Progress } from "@/components/ui/progress";
 import { doshaQuestions } from "@/data/doshaQuestions";
+import { useTranslatedDoshaQuestions } from "@/hooks/useTranslatedDoshaQuestions";
 import { useQuestionnaireStore } from "@/store/questionnaire-store";
+import { useLanguage } from "@/translations/translations";
 import { FormValues } from "@/types/questionnaire.types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
@@ -17,6 +20,11 @@ const DigestionAndApetiteSection = () => {
   const router = useRouter();
   const { digestionAndAppetite, updateDigestionAndAppetite } =
     useQuestionnaireStore();
+
+  const { digestionAndAppetite: sectionQuestions } =
+    useTranslatedDoshaQuestions();
+
+  const { t } = useLanguage();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(digestionAndAppetiteSchema),
@@ -37,13 +45,15 @@ const DigestionAndApetiteSection = () => {
     <div className="flex flex-col items-center">
       <Card className="mb-6 w-full">
         <CardHeader>
-          <CardTitle>Digestion and Apetite</CardTitle>
+          <CardTitle>
+            {t.questionnaire.sectionTitles.digestionAndAppetite}
+          </CardTitle>
         </CardHeader>
       </Card>
       <Progress value={(1 / 7) * 100} />
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
-          {doshaQuestions.digestionAndAppetiteSection.map((question) => (
+          {sectionQuestions.map((question) => (
             <div key={question.id} className="mt-6">
               <QuestionField
                 id={question.id}
@@ -52,12 +62,7 @@ const DigestionAndApetiteSection = () => {
               />
             </div>
           ))}
-          <div className="flex justify-between w-full pt-4">
-            <Button type="button" variant="outline" onClick={handleBackClick}>
-              Back
-            </Button>
-            <Button type="submit">Next</Button>
-          </div>
+          <BottomNavigationButtons handleBackClick={handleBackClick} />
         </form>
       </Form>
     </div>

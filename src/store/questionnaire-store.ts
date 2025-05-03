@@ -21,8 +21,6 @@ const calculateDoshaScores = (
     });
   });
 
-  console.log({ vata, pitta, kapha, totalQuestions });
-
   const percentageResults = [
     {
       doshaType: "vata",
